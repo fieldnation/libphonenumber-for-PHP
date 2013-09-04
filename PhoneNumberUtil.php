@@ -2279,8 +2279,8 @@ class PhoneNumberUtil {
 	}
 
 	private function isNumberMatchingDesc($nationalNumber, PhoneNumberDesc $numberDesc) {
-		$possibleNumberPatternMatcher = preg_match('/^(' . str_replace(array(PHP_EOL, ' '), '', $numberDesc->getPossibleNumberPattern()) . ')$/', $nationalNumber);
-		$nationalNumberPatternMatcher = preg_match('/^(' . str_replace(array(PHP_EOL, ' '), '', $numberDesc->getNationalNumberPattern()) . ')$/', $nationalNumber);
+		$possibleNumberPatternMatcher = preg_match('/^(' . str_replace(array("\n", "\r", ' '), '', $numberDesc->getPossibleNumberPattern()) . ')$/', $nationalNumber);
+		$nationalNumberPatternMatcher = preg_match('/^(' . str_replace(array("\n", "\r", ' '), '', $numberDesc->getNationalNumberPattern()) . ')$/', $nationalNumber);
 		return $possibleNumberPatternMatcher && $nationalNumberPatternMatcher;
 	}
 
